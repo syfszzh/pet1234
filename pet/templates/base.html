@@ -1,0 +1,244 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>{% block title %}Petlor{% endblock %}</title>
+    <!-- font awesome style -->
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Poppins:400,700|Roboto:400,700&display=swap" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+</head>
+
+<body class="{% block body_class %}sub_page{% endblock %}">
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <a class="navbar-brand" href="{% url 'index' %}">
+                        <img src="{% static 'images/logo.png' %}" alt="" />
+                        <span>
+                            宠物乐园
+                        </span>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class=""> </span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+                                <a class="nav-link" href="{% url 'index' %}"> 首页 </a>
+                            </li>
+                            {% if user.is_authenticated %}
+                            <li class="nav-item {% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                                <a class="nav-link" href="{% url 'about' %}"> 我要领养 </a>
+                            </li>
+                            <li class="nav-item {% if request.resolver_match.url_name == 'entrust_form' %}active{% endif %}">
+                                <a class="nav-link" href="{% url 'entrust_form' %}"> 我要寄养 </a>
+                            </li>
+                            <li class="nav-item {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}">
+                                <a class="nav-link" href="{% url 'gallery' %}"> 画廊 </a>
+                            </li>
+                            <li class="nav-item {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                                <a class="nav-link pr-lg-0" href="{% url 'contact' %}"> 联系我们</a>
+                            </li>
+                            {% endif %}
+                            {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'logout' %}"> 退出 </a>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}"> 登录 </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'register' %}"> 注册 </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- end header section -->
+    </div>
+
+    {% block content %}
+    <!-- Content will be placed here -->
+    {% endblock %}
+
+    <!-- info section -->
+    <section class="info_section">
+        <div class="container">
+            <div class="info_form">
+                <div class="row">
+                    <div class="offset-lg-3 col-lg-3">
+                        <h5 class="form_heading">
+                            新闻订阅
+                        </h5>
+                    </div>
+                    <div class="col-lg-6">
+                        <form id="subscribeForm">
+                                <input type="email" id="emailInput" placeholder="输入您的邮箱" required>
+                                <button type="button" id="subscribeBtn">
+                                    订阅
+                                </button>
+                                <div id="successMessage" style="display: none; color: green; margin-top: 10px;">订阅成功，感谢你的支持！</div>
+                            </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="info_logo">
+                        <div>
+                            <a href="{% url 'index' %}">
+                                <img src="{% static 'images/logo.png' %}" alt="" />
+                                <span>
+                                    Pet adoption
+                                </span>
+                            </a>
+                        </div>
+                        <p>
+                            每只宠物均经过疫苗接种、驱虫、绝育及全面健康检查，部分平台提供 “包健康” 服务（如 7 天犬瘟 / 细小保障），并与专业兽医合作，为领养人提供终身医疗咨询。领养后，系统定期提醒回访，确保宠物适应新环境。
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="info_links ">
+                        <h5>
+                            联系我们
+                        </h5>
+                        <div class="info_contact">
+                            <div class="contact_link_box">
+                                <a href="">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <span>
+                                        地址：辽宁省大连市xx区xxxxxxx
+                                    </span>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <span>
+                                        电话：+86 133 XXXX 2202
+                                    </span>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <span>
+                                        邮箱：517676864@163.com
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="info_social">
+                            <a href="">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="info_insta">
+                        <h5>
+                            信息
+                        </h5>
+                        <p class="pr-0 pr-md-4 pr-md-5">
+                            依托大数据算法，根据领养人生活习惯、居住环境及宠物性格、健康状况等维度进行智能推荐，确保每一次配对都基于双向需求。平台严格审核领养人信息，包括经济能力、家庭环境及养宠经验，并通过家访、试养期等环节保障宠物福祉。
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="pl-0 pl-lg-5 pl-md-4">
+                        <h5>
+                            我们的宗旨
+                        </h5>
+                        <p>
+                            以 “领养代替购买” 为核心理念，搭建人与动物的温暖桥梁，守护每一个生命的平等权利，共筑尊重生命、终身负责的有爱世界。
+
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end info_section -->
+
+    <!-- footer section -->
+    <footer class="footer_section">
+        <div class="container">
+            <p>1145141919*****</p>
+        </div>
+    </footer>
+    <!-- footer section -->
+
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <!-- custom js -->
+    <script src="{% static 'js/custom.js' %}"></script>
+    <!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+    <!-- End Google Map -->
+    <script>
+        // 确保DOM加载完成后绑定事件
+        document.addEventListener('DOMContentLoaded', function() {
+            var subscribeBtn = document.getElementById('subscribeBtn');
+            var emailInput = document.getElementById('emailInput');
+            var successMessage = document.getElementById('successMessage');
+            
+            if (!subscribeBtn || !emailInput || !successMessage) {
+                console.error('订阅相关元素未找到，请检查HTML结构');
+                return;
+            }
+            
+            subscribeBtn.addEventListener('click', function() {
+                var email = emailInput.value;
+                if (email.trim() === '') {
+                    alert('请输入邮箱地址');
+                    return;
+                }
+                if (!/\S+@\S+\.\S+/.test(email)) {
+                    alert('请输入有效的邮箱地址');
+                    return;
+                }
+                // 订阅成功后跳转到提示页面
+                window.location.href = '{% url "subscribe_success" %}'; // 假设已配置对应的URL路由
+            });
+        });
+    </script>
+</body>
+
+</html>
