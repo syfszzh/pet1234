@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}我要领养{% endblock %}
+
+{% block content %}
+    <!-- about section：展示平台介绍和领养引导 -->
+    <section class="about_section layout_padding">
+        <div class="container">
+            <div class="row">
+                <!-- 左侧图片展示 -->
+                <div class="col-md-6">
+                    <div class="img-box">
+                        <img src="{% static 'images/about-img.jpg' %}" alt="平台介绍图片">
+                    </div>
+                </div>
+                <!-- 右侧文字详情 -->
+                <div class="col-md-6">
+                    <div class="detail-box">
+                        <div class="heading_container">
+                            <h2>
+                                关于我们
+                            </h2>
+                        </div>
+                        <p>
+                            我们专注于为流浪宠物搭建爱心桥梁，每只待领养宠物均经过全面健康检查、疫苗接种及行为训练。我们承诺为领养家庭提供持续的养宠指导，确保宠物与新家庭的幸福融合。
+                        </p>
+                        <p>
+                            选择领养，您将获得一只忠诚的伙伴，而宠物将重获温暖的港湾。我们提供完善的领养流程，包括家庭背景审核与定期回访，确保每只宠物都能得到终身关爱。
+                        </p>
+                        <!-- 跳转至领养页面的按钮 -->
+                        <a href="{% url 'adoption' %}">
+                            点击领养
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end about section -->
+{% endblock %}

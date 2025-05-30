@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}画廊{% endblock %}
+
+{% block content %}
+    <!-- 画廊主内容区域 -->
+    <!-- gallery section：展示平台画廊图片列表 -->
+    <section class="gallery_section layout_padding">
+        <div class="container">
+            <!-- 画廊标题及简介容器 -->
+            <div class="heading_container">
+                <h2>
+                    我们的画廊
+                </h2>
+            </div>
+            <!-- 画廊图片展示容器 -->
+            <div class="gallery_container">
+                <div class="row">
+                    {% for image in images %}
+                    <!-- 每幅图片的响应式容器（小屏2列，中屏3列） -->
+                    <div class="col-sm-6 col-md-4">
+                        <div class="box">
+                            <!-- 图片展示区域 -->
+                            <div class="img-box">
+                                <img src="{{ image.image.url }}" alt="{{ image.title }}">
+                            </div>
+                            <!-- 图片详情文字区域 -->
+                            <div class="detail-box">
+                                <h5>
+                                    {{ image.title }}
+                                </h5>
+                                <p>
+                                    {{ image.description }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <!-- 查看更多按钮容器 -->
+            <div class="btn-box">
+                <a href="{% url 'gallery' %}">
+                    查看更多
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- end gallery section -->
+{% endblock %}

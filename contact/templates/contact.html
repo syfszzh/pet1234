@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}联系我们{% endblock %}
+
+{% block content %}
+    <!-- 联系我们主内容区域 -->
+    <!-- contact section：包含联系表单和地图展示，背景使用contact_bg.jpg -->
+    <section class="contact_section layout_padding" style="background-image: url('/static/images/contact_bg.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+            <!-- 联系我们标题 -->
+            <div class="heading_container">
+                <h2>
+                    联系我们
+                </h2>
+            </div>
+            <!-- 表单与地图布局行 -->
+            <div class="row">
+                <!-- 左侧联系表单容器（占6列） -->
+                <div class="col-md-6">
+                    <div class="form_container">
+                        <!-- 联系表单，提交到contact视图 -->
+                        <form action="{% url 'contact' %}" method="post">
+                                {% csrf_token %}
+                            <!-- 姓名输入字段 -->
+                            <div>
+                                <input type="text" name="name" placeholder="您的姓名" required />
+                            </div>
+                            <!-- 邮箱输入字段 -->
+                            <div>
+                                <input type="email" name="email" placeholder="您的邮箱" required />
+                            </div>
+                            <!-- 电话输入字段（非必填） -->
+                            <div>
+                                <input type="text" placeholder="电话号码" />
+                            </div>
+                            <!-- 留言文本区域 -->
+                            <div>
+                                <textarea name="message" class="message-box" placeholder="留言" required></textarea>
+                            </div>
+                            <!-- 提交按钮容器 -->
+                            <div class="btn_box">
+                                <button>
+                                    发送
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- 右侧地图展示容器（占6列） -->
+                <div class="col-md-6">
+                    <div class="map_container">
+                        <div class="map">
+                            <!-- Google地图展示区域 -->
+                            <div id="googleMap"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end contact section -->
+{% endblock %}

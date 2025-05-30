@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}企业领养工作犬{% endblock %}
+
+{% block content %}
+    <!-- 企业领养工作犬主内容区域 -->
+    <!-- adoption_section：展示待领养工作犬列表 -->
+    <section class="adoption_section layout_padding">
+        <div class="container">
+            <!-- 待领养工作犬标题 -->
+            <h2 class="text-center mb-4">待领养工作犬</h2>
+            <!-- 工作犬列表循环展示区域 -->
+            <div class="row">
+                {% for pet in corporate_pets %}
+                <!-- 每只工作犬的卡片容器（响应式布局，每行3列） -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <!-- 工作犬图片展示（使用模型中存储的图片路径） -->
+                        <img src="{{ pet.image.url }}" class="card-img-top" alt="{{ pet.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ pet.name }}</h5>
+                            <p class="card-text">年龄：{{ pet.age }}个月</p>
+                            <p class="card-text">品种：{{ pet.breed }}</p>
+                            <p class="card-text">工作类型：{{ pet.work_type }}</p>
+                            <p class="card-text">训练状态：{{ pet.get_training_status_display }}</p>
+                            <p class="card-text">能力简介：{{ pet.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ pet.pet_name }}详情{% endblock %}
+
+{% block content %}
+    <section class="pet_detail_section layout_padding">
+        <div class="container">
+            <h2 class="mb-4">{{ pet.pet_name }}详情</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{ pet.pet_image.url }}" class="img-fluid" alt="{{ pet.pet_name }}">
+                </div>
+                <div class="col-md-6">
+                    <p>年龄：{{ pet.age }}个月</p>
+                    <p>品种：{{ pet.breed }}</p>
+                    <p>简介：{{ pet.description }}</p>
+                </div>
+            </div>
+            <div class="mt-4 text-center">
+                <a href="{% url 'adoption_apply' pet.id %}" class="btn btn-primary">确定领养</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

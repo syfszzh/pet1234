@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}宠物领养 - 首页{% endblock %}
+
+{% block body_class %}
+    <!-- 首页可能不需要 sub_page 类 -->
+{% endblock %}
+
+{% block content %}
+    <!-- 首页主内容区域 -->
+    <!-- slider_section：首页轮播图展示区域 -->
+    <section class="slider_section ">
+        <!-- 轮播图背景 -->
+        <div class="slider_bg_box">
+            <img src="{% static 'images/slider-bg.jpg' %}" alt="轮播背景图">
+        </div>
+        <div class="container">
+            <!-- Bootstrap轮播组件 -->
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <!-- 轮播指示点 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <!-- 轮播内容 -->
+                <div class="carousel-inner">
+                    <!-- 第一个轮播项（激活状态） -->
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <!-- 左侧文字详情 -->
+                            <div class="col-md-6">
+                                <div class="detail-box">
+                                    <h1>
+                                        立即领养<br>
+                                        一只宠物
+                                    </h1>
+                                    <p>
+                                        我们致力于构建一个以 “领养代替购买” 为核心的公益平台，通过科技与爱心的结合，为流浪动物和领养人搭建温暖的桥梁。平台整合全国优质救助资源，连接收容所、救助组织与爱心家庭，提供从宠物信息展示、智能匹配到领养后支持的全流程服务。
+                                    </p>
+                                    <!-- 操作按钮组 -->
+                                    <div class="btn-box">
+                                        <a href="" class="btn-1">
+                                            了解更多
+                                        </a>
+                                        <a href="{% url 'contact' %}" class="btn-2">
+                                            联系我们
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 右侧图片展示 -->
+                            <div class="col-md-6">
+                                <div class="img-box">
+                                    <img src="{% static 'images/slider-img.png' %}" alt="首页轮播图片">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 第二个轮播项 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-box">
+                                    <h1>
+                                        立即领养<br>
+                                        一只宠物
+                                    </h1>
+                                    <p>
+                                        无论您是寻找伴侣的爱宠人士，还是致力于动物保护的志愿者，这里都能为您提供专业支持。领养不仅是给予一个家，更是参与一场改变生命的公益行动 —— 让每一个生命都值得被温柔以待
+                                    </p>
+                                    <div class="btn-box">
+                                        <a href="" class="btn-1">
+                                            了解更多
+                                        </a>
+                                        <a href="{% url 'contact' %}" class="btn-2">
+                                            联系我们
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="img-box">
+                                    <img src="{% static 'images/slider-img.png' %}" alt="首页轮播图片">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 第三个轮播项 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-box">
+                                    <h1>
+                                        立即领养<br>
+                                        一只宠物
+                                    </h1>
+                                    <p>
+                                        与全国超 600 家救助团队合作，累计助 16 万 + 宠物找到新家。平台全程公示宠物档案及领养流程，倡导 “终身负责” 理念，通过签署协议、定期回访等机制降低弃养率。
+                                    </p>
+                                    <div class="btn-box">
+                                        <a href="" class="btn-1">
+                                            了解更多
+                                        </a>
+                                        <a href="{% url 'contact' %}" class="btn-2">
+                                            联系我们
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="img-box">
+                                    <img src="{% static 'images/slider-img.png' %}" alt="首页轮播图片">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 轮播控制按钮 -->
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="sr-only">上一个</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="sr-only">下一个</span>
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

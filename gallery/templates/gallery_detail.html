@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 引入静态文件 -->
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ image.title }}</title>
+    <!-- 引入Bootstrap样式 -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+    <!-- 引入自定义主样式 -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <!-- 引入响应式样式 -->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <!-- 头部导航区域 -->
+    <div class="hero_area">
+        <header class="header_section">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <!-- 网站品牌LOGO -->
+                    <a class="navbar-brand" href="{% url 'index' %}">
+                        <img src="{% static 'images/logo.png' %}" alt="网站LOGO" />
+                        <span>Petlor</span>
+                    </a>
+                    <!-- 移动端导航切换按钮 -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class=""> </span>
+                    </button>
+                    <!-- 导航菜单 -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'index' %}"> Home </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'about' %}"> About </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'gallery' %}"> Gallery </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pr-lg-0" href="{% url 'contact' %}"> Contact us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    </div>
+    <!-- 图片详细信息展示区域 -->
+    <section class="gallery_detail_section layout_padding">
+        <div class="container">
+            <div class="row">
+                <!-- 左侧大图展示 -->
+                <div class="col-md-6">
+                    <img src="{{ image.image.url }}" alt="{{ image.title }}" class="img-fluid">
+                </div>
+                <!-- 右侧图片描述 -->
+                <div class="col-md-6">
+                    <h2>{{ image.title }}</h2>
+                    <p>{{ image.description }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 底部信息区域（包含新闻订阅和联系信息） -->
+    <section class="info_section">
+        <div class="container">
+            <!-- 新闻订阅表单 -->
+            <div class="info_form">
+                <div class="row">
+                    <div class="offset-lg-3 col-lg-3">
+                        <h5 class="form_heading">Newsletter</h5>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="#">
+                            <input type="text" placeholder="Enter Your email">
+                            <button>subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <!-- 网站LOGO及简介 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="info_logo">
+                        <div>
+                            <a href="{% url 'index' %}">
+                                <img src="{% static 'images/logo.png' %}" alt="网站LOGO" />
+                                <span>Petlor</span>
+                            </a>
+                        </div>
+                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration</p>
+                    </div>
+                </div>
+                <!-- 联系信息 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="info_links ">
+                        <h5>Get in touch</h5>
+                        <div class="info_contact">
+                            <div class="contact_link_box">
+                                <a href="">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <span>Location</span>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <span>Call +01 1234567890</span>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <span>demo@gmail.com</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- 社交媒体链接 -->
+                        <div class="info_social">
+                            <a href="">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 网站信息 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="info_insta">
+                        <h5>INFORMATION</h5>
+                        <p>Donec odio. Quisque volutpat mattis eros.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros</p>
+                    </div>
+                </div>
+                <!-- 店铺信息 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="pl-0 pl-lg-5 pl-md-4">
+                        <h5>Our Shop</h5>
+                        <p>Donec odio. Quisque volutpat mattis eros.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 页脚版权信息 -->
+    <footer class="footer_section">
+        <div class="container">
+            <p>版权所有 © 2021. 公司名称 保留所有权利。<a target="_blank" href="https://sc.chinaz.com/moban/">网页模板</a></p>
+        </div>
+    </footer>
+    <!-- 引入 JavaScript 文件 -->
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/ekko-lightbox.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <!-- 引入Google地图API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+</body>
+</html>

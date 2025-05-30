@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}我要寄养{% endblock %}
+
+{% block content %}
+    <section class="contact_section layout_padding" style="background-image: url('/static/images/entrust_bg.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+            <div class="heading_container">
+                <h2>我要寄养</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="form_container">
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }}" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name">姓名</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">联系电话</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pet_name">宠物名称</label>
+                                <input type="text" id="pet_name" name="pet_name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pet_age">宠物年龄（岁）</label>
+                                <input type="number" id="pet_age" name="pet_age" class="form-control" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pet_species">宠物品种</label>
+                                <input type="text" id="pet_species" name="pet_species" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">宠物描述</label>
+                                <textarea id="description" name="description" class="form-control" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="pet_image">宠物图片</label>
+                                <input type="file" id="pet_image" name="pet_image" class="form-control-file" required>
+                            </div>
+                            <div class="btn_box mt-4">
+                                <button type="submit" class="btn">提交</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

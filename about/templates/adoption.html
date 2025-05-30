@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}宠物领养{% endblock %}
+
+{% block content %}
+    <!-- 宠物领养主内容区域 -->
+    <!-- adoption_section：展示待领养宠物列表，背景使用entrust_bg.jpg -->
+    <section class="adoption_section layout_padding" style="background-image: url('/static/images/entrust_bg.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+            <!-- 企业领养入口按钮 -->
+            <div class="d-flex justify-content-center mb-3">
+                <a href="{% url 'corporate_adoption' %}" class="btn btn-primary">企业领养</a>
+            </div>
+            <!-- 待领养宠物标题 -->
+            <h2 class="text-center mb-4">待领养宠物</h2>
+            <!-- 宠物列表循环展示区域 -->
+            <div class="row">
+                {% for pet in pets %}
+                <!-- 每只宠物的卡片容器（响应式布局，每行3列） -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <!-- 宠物图片展示（使用模型中存储的图片路径） -->
+                        <a href="{% url 'pet_detail' pet.id %}"><img src="{{ pet.pet_image.url }}" class="card-img-top" alt="{{ pet.pet_name }}"></a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ pet.name }}</h5>
+                            <p class="card-text">年龄：{{ pet.age }}个月</p>
+                            <p class="card-text">品种：{{ pet.breed }}</p>
+                            <p class="card-text">简介：{{ pet.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
